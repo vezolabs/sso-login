@@ -1,0 +1,23 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Vezolabs\SsoLoginBundle\:
+        resource: '../src/*'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/VezolabsSsoLoginBundle.php'
+
+    Vezolabs\SsoLoginBundle\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
+
+    Vezolabs\SsoLoginBundle\Installer\SsoLoginInstaller:
+        public: true
+
+    Vezolabs\SsoLoginBundle\Webpack\WebpackEntryPointProvider:
+        tags:
+            - { name: pimcore_studio_ui.webpack_entry_point_provider }

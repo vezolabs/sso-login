@@ -1,0 +1,22 @@
+{
+  "name": "@vezolabs/pimcore-sso-login-bundle",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pimcore 12 Studio UI Plugin for VezoLabs SSO Login",
+  "scripts": {
+    "build": "rsbuild build",
+    "dev": "rsbuild build --watch"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.3.0",
+    "antd": "^5.14.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@module-federation/rsbuild-plugin": "^0.8.0",
+    "@rsbuild/core": "^1.2.0",
+    "@rsbuild/plugin-react": "^1.1.0",
+    "typescript": "^5.4.0"
+  }
+}

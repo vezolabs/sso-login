@@ -1,0 +1,128 @@
+{
+  "id": "vezolabs_sso_login_bundle",
+  "name": "vezolabs_sso_login_bundle",
+  "metaData": {
+    "name": "vezolabs_sso_login_bundle",
+    "type": "app",
+    "buildInfo": {
+      "buildVersion": "1.0.0",
+      "buildName": "@vezolabs/pimcore-sso-login-bundle"
+    },
+    "remoteEntry": {
+      "name": "static/js/remoteEntry.js",
+      "path": "",
+      "type": "global"
+    },
+    "types": {
+      "path": "",
+      "name": "",
+      "zip": "static/js/@mf-types.zip",
+      "api": "static/js/@mf-types.d.ts"
+    },
+    "globalName": "vezolabs_sso_login_bundle",
+    "pluginVersion": "0.8.12",
+    "prefetchInterface": false,
+    "publicPath": "/bundles/vezolabsssologin/build/vezolabs-sso-login/"
+  },
+  "shared": [
+    {
+      "singleton": true,
+      "requiredVersion": "^5.29.3",
+      "shareScope": "default",
+      "eager": false,
+      "name": "antd",
+      "version": "5.29.3",
+      "id": "vezolabs_sso_login_bundle:antd",
+      "assets": {
+        "js": {
+          "async": [
+            "static/js/async/237.a59b5b1a.js",
+            "static/js/async/98.774082c4.js"
+          ],
+          "sync": [
+            "static/js/async/447.6ae40e55.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      },
+      "usedIn": []
+    },
+    {
+      "singleton": true,
+      "requiredVersion": "^18.3.1",
+      "shareScope": "default",
+      "eager": false,
+      "name": "react-dom",
+      "version": "18.3.1",
+      "id": "vezolabs_sso_login_bundle:react-dom",
+      "assets": {
+        "js": {
+          "async": [
+            "static/js/async/237.a59b5b1a.js"
+          ],
+          "sync": [
+            "static/js/async/98.774082c4.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      },
+      "usedIn": []
+    },
+    {
+      "singleton": true,
+      "requiredVersion": "^18.3.1",
+      "shareScope": "default",
+      "eager": false,
+      "name": "react",
+      "version": "18.3.1",
+      "id": "vezolabs_sso_login_bundle:react",
+      "assets": {
+        "js": {
+          "async": [],
+          "sync": [
+            "static/js/async/237.a59b5b1a.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      },
+      "usedIn": []
+    }
+  ],
+  "remotes": [],
+  "exposes": [
+    {
+      "path": "./plugins",
+      "id": "vezolabs_sso_login_bundle:plugins",
+      "name": "plugins",
+      "requires": [],
+      "file": "js/src/plugins.ts",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/254.927ca3d1.js",
+            "static/js/async/379.0de69651.js",
+            "static/js/async/__federation_expose_plugins.bb49dfa7.js"
+          ],
+          "async": [
+            "static/js/async/237.a59b5b1a.js",
+            "static/js/async/447.6ae40e55.js",
+            "static/js/async/98.774082c4.js"
+          ]
+        },
+        "css": {
+          "sync": [],
+          "async": []
+        }
+      }
+    }
+  ]
+}

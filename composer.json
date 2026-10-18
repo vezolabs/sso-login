@@ -1,0 +1,42 @@
+{
+  "name": "vezolabs/pimcore-sso-login-bundle",
+  "type": "pimcore-bundle",
+  "description": "Production-Ready Single Sign-On (SSO) bundle for Pimcore 12 Studio with Microsoft Entra ID & SAML 2.0 support",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "VezoLabs",
+      "homepage": "https://github.com/vezolabs"
+    }
+  ],
+  "require": {
+    "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+    "pimcore/pimcore": "^2025.0 || ^2026.0 || *",
+    "pimcore/studio-backend-bundle": "*",
+    "pimcore/studio-ui-bundle": "*",
+    "onelogin/php-saml": "^4.3",
+    "robrichards/xmlseclibs": "^3.1",
+    "symfony/security-bundle": "^6.4 || ^7.0 || ^8.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.0 || ^11.0",
+    "phpstan/phpstan": "^1.11 || ^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Vezolabs\\SsoLoginBundle\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Vezolabs\\SsoLoginBundle\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "pimcore": {
+      "bundles": [
+        "Vezolabs\\SsoLoginBundle\\VezolabsSsoLoginBundle"
+      ]
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "allFiles": [
+    "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/main.8dae4838.js",
+    "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/remoteEntry.js",
+    "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/async/237.a59b5b1a.js",
+    "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/async/__federation_expose_plugins.bb49dfa7.js",
+    "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/async/254.927ca3d1.js",
+    "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/async/447.6ae40e55.js",
+    "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/async/379.0de69651.js",
+    "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/473.5d0565c8.js",
+    "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/async/98.774082c4.js",
+    "/bundles/vezolabsssologin/build/vezolabs-sso-login/mf-stats.json",
+    "/bundles/vezolabsssologin/build/vezolabs-sso-login/mf-manifest.json",
+    "/bundles/vezolabsssologin/build/vezolabs-sso-login/main.html"
+  ],
+  "entries": {
+    "main": {
+      "html": [
+        "/bundles/vezolabsssologin/build/vezolabs-sso-login/main.html"
+      ],
+      "initial": {
+        "js": [
+          "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/473.5d0565c8.js",
+          "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/main.8dae4838.js"
+        ]
+      },
+      "async": {
+        "js": [
+          "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/async/98.774082c4.js",
+          "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/async/447.6ae40e55.js",
+          "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/async/254.927ca3d1.js",
+          "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/async/237.a59b5b1a.js"
+        ]
+      }
+    },
+    "vezolabs_sso_login_bundle": {
+      "initial": {
+        "js": [
+          "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/remoteEntry.js"
+        ]
+      },
+      "async": {
+        "js": [
+          "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/async/98.774082c4.js",
+          "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/async/379.0de69651.js",
+          "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/async/447.6ae40e55.js",
+          "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/async/254.927ca3d1.js",
+          "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/async/__federation_expose_plugins.bb49dfa7.js",
+          "/bundles/vezolabsssologin/build/vezolabs-sso-login/static/js/async/237.a59b5b1a.js"
+        ]
+      }
+    }
+  },
+  "integrity": {}
+}
