@@ -6,6 +6,7 @@ namespace Vezolabs\SsoLoginBundle\Controller;
 
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -229,5 +230,45 @@ class SamlAuthController extends AbstractController
         );
 
         return new Response($html, $statusCode);
+    }
+
+    /**
+     * Public endpoint returning enabled provider buttons for the login page (no authentication required).
+     */
+    #[Route('/sso/public-config', name: 'vezolabs_sso_public_config', methods: ['GET'])]
+    public function publicConfig(): JsonResponse
+    {
+        $enabledProviders = $this->providerRepository->findEnabled();
+        $buttons = [];
+        $hideLocalLogin = false;
+        $autoRedirectUrl = null;
+
+        foreach ($enabledProviders as $p) {
+            if ($p->isLoginButtonVisible()) {
+                $loginUrl = $this->generateUrl('vezolabs_sso_login', ['providerSlug' => $p->getName()]);
+                $buttons[] = [
+                    'slug' => $p->getName(),
+                    'display_name' => $p->getDisplayName(),
+                    'label' => $p->getLoginButtonLabel(),
+                    'icon' => $p->getLoginButtonIcon(),
+                    'login_url' => $loginUrl,
+                    'is_default' => $p->isDefault(),
+                ];
+
+                if ($p->isHideLocalLogin()) {
+                    $hideLocalLogin = true;
+                }
+                if ($p->isAutoRedirectSso() && $autoRedirectUrl === null) {
+                    $autoRedirectUrl = $loginUrl;
+                }
+            }
+        }
+
+        return new JsonResponse([
+            'sso_available' => !empty($buttons),
+            'providers' => $buttons,
+            'hide_local_login' => $hideLocalLogin,
+            'auto_redirect_url' => $autoRedirectUrl,
+        ]);
     }
 }

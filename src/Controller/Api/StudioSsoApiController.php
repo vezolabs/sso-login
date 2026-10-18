@@ -376,47 +376,6 @@ class StudioSsoApiController extends AbstractController
         return new JsonResponse(['certificates' => $certs]);
     }
 
-    /**
-     * Public endpoint returning enabled provider buttons for the login page (no sensitive info).
-     */
-    #[Route('/public-config', name: 'vezolabs_sso_api_public_config', methods: ['GET'])]
-    #[Route('/api/sso/public-config', name: 'vezolabs_sso_api_public_config_alias', methods: ['GET'])]
-    public function getPublicConfig(): JsonResponse
-    {
-        $enabledProviders = $this->providerRepository->findEnabled();
-        $buttons = [];
-        $hideLocalLogin = false;
-        $autoRedirectUrl = null;
-
-        foreach ($enabledProviders as $p) {
-            if ($p->isLoginButtonVisible()) {
-                $loginUrl = $this->generateUrl('vezolabs_sso_login', ['providerSlug' => $p->getName()]);
-                $buttons[] = [
-                    'slug' => $p->getName(),
-                    'display_name' => $p->getDisplayName(),
-                    'label' => $p->getLoginButtonLabel(),
-                    'icon' => $p->getLoginButtonIcon(),
-                    'login_url' => $loginUrl,
-                    'is_default' => $p->isDefault(),
-                ];
-
-                if ($p->isHideLocalLogin()) {
-                    $hideLocalLogin = true;
-                }
-                if ($p->isAutoRedirectSso() && $autoRedirectUrl === null) {
-                    $autoRedirectUrl = $loginUrl;
-                }
-            }
-        }
-
-        return new JsonResponse([
-            'sso_available' => !empty($buttons),
-            'providers' => $buttons,
-            'hide_local_login' => $hideLocalLogin,
-            'auto_redirect_url' => $autoRedirectUrl,
-        ]);
-    }
-
     private function denyAccessUnlessGrantedPermission(): void
     {
         $user = $this->getUser();

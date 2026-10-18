@@ -15,7 +15,7 @@ export const SsoLoginButton: React.FC<SsoLoginButtonProps> = ({
   const [config, setConfig] = useState<PublicConfigResponse | null>(null);
 
   useEffect(() => {
-    fetch('/api/sso/public-config')
+    fetch('/sso/public-config')
       .then(res => res.json())
       .then((data: PublicConfigResponse) => {
         setConfig(data);
