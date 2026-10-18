@@ -29,7 +29,7 @@ function doRegister(container: any) {
       'WidgetManagerService',
       'widgetManager',
       'App/WidgetManager/WidgetRegistry',
-      'widgetRegistry'
+      'widgetRegistry',
     ]);
 
     if (widgetRegistry && typeof widgetRegistry.registerWidget === 'function') {
@@ -39,18 +39,18 @@ function doRegister(container: any) {
       });
     }
 
-    // 2. Register Navigation Items (under System menu and Settings)
+    // 2. Register Navigation Items
     const mainNavRegistry = resolveService(container, [
       'MainNavRegistry',
       'mainNavRegistry',
-      'App/MainNavRegistry/MainNavRegistry'
+      'App/MainNavRegistry/MainNavRegistry',
     ]);
 
     if (mainNavRegistry && typeof mainNavRegistry.registerMainNavItem === 'function') {
       // Primary entry under System
       mainNavRegistry.registerMainNavItem({
-        path: 'System/SSO Login',
-        label: 'SSO Login',
+        path: 'System/Vezo Labs : SSO Login',
+        label: 'Vezo Labs : SSO Login',
         order: 1060,
         icon: 'key',
         widgetConfig: {
@@ -58,8 +58,8 @@ function doRegister(container: any) {
           id: 'sso-login',
           component: 'sso-login',
           config: {
-            title: 'SSO Login',
-            translationKey: 'SSO Login',
+            title: 'Vezo Labs : SSO Login',
+            label: 'Vezo Labs : SSO Login',
             icon: {
               type: 'name',
               value: 'key',
@@ -70,8 +70,8 @@ function doRegister(container: any) {
 
       // Entry under Settings
       mainNavRegistry.registerMainNavItem({
-        path: 'Settings/SSO Login',
-        label: 'SSO Login',
+        path: 'Settings/Vezo Labs : SSO Login',
+        label: 'Vezo Labs : SSO Login',
         order: 1060,
         icon: 'key',
         widgetConfig: {
@@ -79,8 +79,8 @@ function doRegister(container: any) {
           id: 'sso-login',
           component: 'sso-login',
           config: {
-            title: 'SSO Login',
-            translationKey: 'SSO Login',
+            title: 'Vezo Labs : SSO Login',
+            label: 'Vezo Labs : SSO Login',
             icon: {
               type: 'name',
               value: 'key',
@@ -93,7 +93,7 @@ function doRegister(container: any) {
     // 3. Register Login Screen Slot for Single Sign-On Button
     const componentRegistry = resolveService(container, [
       'App/ComponentRegistry/ComponentRegistry',
-      'componentRegistry'
+      'componentRegistry',
     ]);
 
     if (componentRegistry && typeof componentRegistry.registerToSlot === 'function') {
