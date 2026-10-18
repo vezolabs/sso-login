@@ -16,13 +16,12 @@ Technical administrators install the package once via Composer. From that point 
 
 <!-- Visual placeholders: Drop screenshots into docs/images/ -->
 
-| Overview Dashboard | Microsoft Entra ID Setup Wizard |
+| Identity Providers Dashboard | SAML Setup Wizard |
 | :---: | :---: |
-| ![Overview Dashboard](docs/images/overview-dashboard.png) | ![Entra ID Wizard](docs/images/entra-wizard.png) |
-
-| Role & Attribute Mapping | Audit Log & Diagnostics |
+| ![Identity Providers Dashboard](docs/images/screen-1.png) | ![SAML Setup Wizard](docs/images/screen-2.png) |
+| Role & Attribute Mapping | Security Audit Logs |
 | :---: | :---: |
-| ![Role Mapping](docs/images/role-mapping.png) | ![Audit Logs](docs/images/audit-logs.png) |
+| ![Role & Attribute Mapping](docs/images/screen-3.png) | ![Security Audit Logs](docs/images/screen-4.png) |
 
 ---
 
