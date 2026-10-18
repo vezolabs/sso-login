@@ -8,7 +8,7 @@
 
 **VezoLabs SSO Login** is an enterprise-grade Single Sign-On (SSO) bundle built for **Pimcore 12 Studio**. It enables seamless SAML 2.0 authentication with **Microsoft Entra ID** (Azure AD) and generic SAML identity providers.
 
-Technical administrators install the package once via Composer. From that point forward, all routine SSO management—identity provider setup, SAML metadata ingestion, claim mapping, role assignments, JIT provisioning, certificate rotation, and audit monitoring—is handled entirely through the **Pimcore Studio UI** (`Settings → SSO Login`).
+Technical administrators install the package once via Composer. From that point forward, all routine SSO management—identity provider setup, SAML metadata ingestion, claim mapping, role assignments, JIT provisioning, certificate rotation, and audit monitoring—is handled entirely through the **Pimcore Studio UI** (accessible via **System → SSO Login**).
 
 ---
 
@@ -38,7 +38,7 @@ Technical administrators install the package once via Composer. From that point 
 
 ## Key Features
 
-- **Native Pimcore 12 Studio UI**: Built with React 18, TypeScript, and Module Federation. Registers directly into Studio navigation (`Settings → SSO Login`) and injects branded SSO buttons into the Studio login form via slot renderers. Zero legacy ExtJS dependencies.
+- **Native Pimcore 12 Studio UI**: Built with React 18, TypeScript, and Module Federation. Registers directly into Studio navigation (**System → SSO Login**) and injects branded SSO buttons into the Studio login form via slot renderers. Zero legacy ExtJS dependencies.
 - **Microsoft Entra ID Wizard**: A step-by-step 7-stage configuration guide providing instant copyable Service Provider endpoints (Entity ID, ACS URL, Metadata URL).
 - **Flexible Metadata Ingestion**: Upload Federation Metadata XML, fetch dynamically from remote HTTPS URLs with live preview, or configure SAML endpoints manually.
 - **Enterprise SAML 2.0 Security**:
@@ -95,13 +95,28 @@ Need SSO for an earlier Pimcore version, or require bespoke enterprise integrati
 
 ## Installation
 
-### 1. Require Package via Composer
+### Quick One-Line Install
+
+Run the following command in your Pimcore project root:
+
+```bash
+composer require vezolabs/pimcore-sso-login-bundle && \
+bin/console pimcore:bundle:install VezolabsSsoLoginBundle && \
+bin/console assets:install public && \
+bin/console cache:clear
+```
+
+---
+
+### Step-by-Step Installation
+
+#### 1. Require Package via Composer
 
 ```bash
 composer require vezolabs/pimcore-sso-login-bundle
 ```
 
-### 2. Enable Bundle
+#### 2. Enable Bundle
 
 If not auto-registered by Symfony Flex, add the bundle to `config/bundles.php`:
 
@@ -112,20 +127,20 @@ return [
 ];
 ```
 
-### 3. Run Bundle Installer
+#### 3. Run Bundle Installer & Migrations
 
 ```bash
 bin/console pimcore:bundle:install VezolabsSsoLoginBundle
 ```
 
-### 4. Publish Assets & Clear Cache
+#### 4. Publish Frontend Assets & Clear Cache
 
 ```bash
 bin/console assets:install public
 bin/console cache:clear
 ```
 
-### 5. Verify Installation
+#### 5. Verify Installation
 
 ```bash
 bin/console pimcore:bundle:list
@@ -136,8 +151,8 @@ bin/console vezolabs:sso:test
 
 ## Quick Start Guide
 
-1. Log into Pimcore Studio (`/pimcore-studio/`) with administrator privileges.
-2. In the navigation menu, select **Settings → SSO Login**.
+1. Log into Pimcore Studio (`/pimcore-studio/`) with administrator credentials.
+2. In the left navigation dock, click **System** (shield icon) → **SSO Login**.
 3. Open the **Entra ID Wizard** tab:
    - Copy the generated **Entity ID** and **ACS URL** into your Microsoft Entra Enterprise Application.
    - Download the **Federation Metadata XML** from Azure and upload it into Step 4 (or enter your App Federation Metadata URL).
