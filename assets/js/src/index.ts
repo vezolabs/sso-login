@@ -47,41 +47,43 @@ function doRegister(container: any) {
     ]);
 
     if (mainNavRegistry && typeof mainNavRegistry.registerMainNavItem === 'function') {
-      // Primary entry under System (the shield menu in Studio sidebar)
+      // Primary entry under System
       mainNavRegistry.registerMainNavItem({
         path: 'System/SSO Login',
         label: 'SSO Login',
-        order: 850,
-        icon: 'shield',
+        order: 1060,
+        icon: 'key',
         widgetConfig: {
           name: 'sso-login',
           id: 'sso-login',
           component: 'sso-login',
           config: {
             title: 'SSO Login',
+            translationKey: 'SSO Login',
             icon: {
               type: 'name',
-              value: 'shield',
+              value: 'key',
             },
           },
         },
       });
 
-      // Secondary entry under Settings if present
+      // Entry under Settings
       mainNavRegistry.registerMainNavItem({
         path: 'Settings/SSO Login',
         label: 'SSO Login',
-        order: 850,
-        icon: 'shield',
+        order: 1060,
+        icon: 'key',
         widgetConfig: {
           name: 'sso-login',
           id: 'sso-login',
           component: 'sso-login',
           config: {
             title: 'SSO Login',
+            translationKey: 'SSO Login',
             icon: {
               type: 'name',
-              value: 'shield',
+              value: 'key',
             },
           },
         },

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Tabs, Spin, message, Typography, Card } from 'antd';
+import { Tabs, Spin, message, Typography, Card, Space, ConfigProvider, Button, Tag } from 'antd';
 import {
   DashboardOutlined,
   SafetyCertificateOutlined,
@@ -8,7 +8,9 @@ import {
   TeamOutlined,
   UserAddOutlined,
   FileTextOutlined,
-  BookOutlined
+  BookOutlined,
+  KeyOutlined,
+  SyncOutlined,
 } from '@ant-design/icons';
 import { OverviewDashboard } from '../components/OverviewDashboard';
 import { ProviderList } from '../components/ProviderList';
@@ -21,7 +23,15 @@ import { AuditLogTable } from '../components/AuditLogTable';
 import { IdentityProvider, OverviewMetrics } from '../types';
 import { ssoApi } from '../services/api';
 
-const { Title, Paragraph } = Typography;
+const { Title, Text, Paragraph } = Typography;
+
+const PIMCORE_THEME = {
+  token: {
+    colorPrimary: '#722ed1',
+    borderRadius: 6,
+    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+  },
+};
 
 export const SsoManagementPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -88,7 +98,12 @@ export const SsoManagementPage: React.FC = () => {
   const items = [
     {
       key: 'overview',
-      label: <span><DashboardOutlined /> Overview</span>,
+      label: (
+        <Space size={6}>
+          <DashboardOutlined />
+          <span>Overview</span>
+        </Space>
+      ),
       children: (
         <OverviewDashboard
           metrics={metrics}
@@ -108,7 +123,12 @@ export const SsoManagementPage: React.FC = () => {
     },
     {
       key: 'providers',
-      label: <span><SafetyCertificateOutlined /> Identity Providers</span>,
+      label: (
+        <Space size={6}>
+          <SafetyCertificateOutlined />
+          <span>Identity Providers</span>
+        </Space>
+      ),
       children: (
         <ProviderList
           providers={providers}
@@ -125,7 +145,12 @@ export const SsoManagementPage: React.FC = () => {
     },
     {
       key: 'wizard',
-      label: <span><WindowsOutlined /> Microsoft Entra Setup Wizard</span>,
+      label: (
+        <Space size={6}>
+          <WindowsOutlined />
+          <span>Setup Wizard</span>
+        </Space>
+      ),
       children: (
         <EntraIdWizard
           initialProvider={selectedProvider}
@@ -139,7 +164,12 @@ export const SsoManagementPage: React.FC = () => {
     },
     {
       key: 'attributes',
-      label: <span><PartitionOutlined /> Attribute Mapping</span>,
+      label: (
+        <Space size={6}>
+          <PartitionOutlined />
+          <span>Attribute Mapping</span>
+        </Space>
+      ),
       children: selectedProvider ? (
         <AttributeMappingTable
           provider={selectedProvider}
@@ -147,12 +177,19 @@ export const SsoManagementPage: React.FC = () => {
           loading={loading}
         />
       ) : (
-        <p>Please configure a provider first.</p>
+        <Card style={{ borderRadius: 8 }}>
+          <p>Please configure a provider first.</p>
+        </Card>
       ),
     },
     {
       key: 'roles',
-      label: <span><TeamOutlined /> Role Mapping</span>,
+      label: (
+        <Space size={6}>
+          <TeamOutlined />
+          <span>Role Mapping</span>
+        </Space>
+      ),
       children: selectedProvider ? (
         <RoleMappingTable
           provider={selectedProvider}
@@ -160,12 +197,19 @@ export const SsoManagementPage: React.FC = () => {
           loading={loading}
         />
       ) : (
-        <p>Please configure a provider first.</p>
+        <Card style={{ borderRadius: 8 }}>
+          <p>Please configure a provider first.</p>
+        </Card>
       ),
     },
     {
       key: 'provisioning',
-      label: <span><UserAddOutlined /> User Provisioning</span>,
+      label: (
+        <Space size={6}>
+          <UserAddOutlined />
+          <span>User Provisioning</span>
+        </Space>
+      ),
       children: selectedProvider ? (
         <ProvisioningSettings
           provider={selectedProvider}
@@ -173,22 +217,39 @@ export const SsoManagementPage: React.FC = () => {
           loading={loading}
         />
       ) : (
-        <p>Please configure a provider first.</p>
+        <Card style={{ borderRadius: 8 }}>
+          <p>Please configure a provider first.</p>
+        </Card>
       ),
     },
     {
       key: 'certificates',
-      label: <span><SafetyCertificateOutlined /> Certificate Management</span>,
+      label: (
+        <Space size={6}>
+          <SafetyCertificateOutlined />
+          <span>Certificates</span>
+        </Space>
+      ),
       children: <CertificateManagement />,
     },
     {
       key: 'logs',
-      label: <span><FileTextOutlined /> Authentication Logs</span>,
+      label: (
+        <Space size={6}>
+          <FileTextOutlined />
+          <span>Audit Logs</span>
+        </Space>
+      ),
       children: <AuditLogTable />,
     },
     {
       key: 'guide',
-      label: <span><BookOutlined /> Setup & Recovery Guide</span>,
+      label: (
+        <Space size={6}>
+          <BookOutlined />
+          <span>Setup Guide</span>
+        </Space>
+      ),
       children: (
         <Card style={{ borderRadius: 8 }}>
           <Title level={4}>Emergency Recovery & Local Login Access</Title>
@@ -208,14 +269,63 @@ export const SsoManagementPage: React.FC = () => {
   ];
 
   return (
-    <div style={{ padding: 24, background: '#f8fafc', minHeight: '100vh' }}>
-      <Tabs
-        activeKey={activeTab}
-        onChange={setActiveTab}
-        items={items}
-        type="card"
-        style={{ background: 'transparent' }}
-      />
-    </div>
+    <ConfigProvider theme={PIMCORE_THEME}>
+      <div
+        style={{
+          height: '100%',
+          width: '100%',
+          overflowY: 'auto',
+          background: '#f8fafc',
+          padding: '24px',
+          boxSizing: 'border-box',
+        }}
+      >
+        {/* Page Header */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
+          <Space align="center" size={14}>
+            <div
+              style={{
+                width: 44,
+                height: 44,
+                borderRadius: 10,
+                background: '#f3e8ff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#722ed1',
+                fontSize: 24,
+                boxShadow: '0 2px 6px rgba(114, 46, 209, 0.15)',
+              }}
+            >
+              <KeyOutlined />
+            </div>
+            <div>
+              <Title level={3} style={{ margin: 0, color: '#1e293b' }}>
+                Single Sign-On (SSO)
+              </Title>
+              <Text type="secondary" style={{ fontSize: 13 }}>
+                Enterprise authentication management for Microsoft Entra ID and SAML 2.0 in Pimcore Studio
+              </Text>
+            </div>
+          </Space>
+
+          <Space>
+            <Button icon={<SyncOutlined />} onClick={loadData} loading={loading}>
+              Refresh
+            </Button>
+          </Space>
+        </div>
+
+        {/* Main Tabs */}
+        <Tabs
+          activeKey={activeTab}
+          onChange={setActiveTab}
+          items={items}
+          size="middle"
+          destroyInactiveTabPane={false}
+          style={{ background: 'transparent' }}
+        />
+      </div>
+    </ConfigProvider>
   );
 };

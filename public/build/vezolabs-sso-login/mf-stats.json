@@ -16,8 +16,8 @@
     "types": {
       "path": "",
       "name": "",
-      "zip": "static/js/@mf-types.zip",
-      "api": "static/js/@mf-types.d.ts"
+      "zip": "",
+      "api": ""
     },
     "globalName": "vezolabs_sso_login_bundle",
     "pluginVersion": "0.8.12",
@@ -109,8 +109,8 @@
         "js": {
           "sync": [
             "static/js/async/254.927ca3d1.js",
-            "static/js/async/379.0de69651.js",
-            "static/js/async/__federation_expose_plugins.7130d8f4.js"
+            "static/js/async/29.dc5edac5.js",
+            "static/js/async/__federation_expose_plugins.90215a4d.js"
           ],
           "async": [
             "static/js/async/237.a59b5b1a.js",

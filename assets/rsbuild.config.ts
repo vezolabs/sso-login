@@ -60,6 +60,7 @@ export default defineConfig({
     pluginModuleFederation({
       name: 'vezolabs_sso_login_bundle',
       filename: 'static/js/remoteEntry.js',
+      dts: false,
       exposes: {
         '.': './js/src/plugins.ts',
         './plugins': './js/src/plugins.ts',

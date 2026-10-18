@@ -17,7 +17,7 @@ import { PlusOutlined, DeleteOutlined, SaveOutlined, SafetyOutlined } from '@ant
 import { IdentityProvider, PimcoreRole } from '../types';
 import { ssoApi } from '../services/api';
 
-const { Paragraph, Text } = Typography;
+const { Title, Paragraph, Text } = Typography;
 
 interface RoleMappingTableProps {
   provider: IdentityProvider;
