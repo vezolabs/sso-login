@@ -47,11 +47,11 @@ function doRegister(container: any) {
     ]);
 
     if (mainNavRegistry && typeof mainNavRegistry.registerMainNavItem === 'function') {
-      // Primary entry under System
+      // Primary: Parallel to System at top level
       mainNavRegistry.registerMainNavItem({
-        path: 'System/Vezo Labs : SSO Login',
-        label: 'Vezo Labs : SSO Login',
-        order: 1060,
+        path: 'SSO Login',
+        label: 'SSO Login',
+        order: 820,
         icon: 'key',
         widgetConfig: {
           name: 'sso-login',
@@ -68,11 +68,11 @@ function doRegister(container: any) {
         },
       });
 
-      // Entry under Settings
+      // Secondary: Under System menu
       mainNavRegistry.registerMainNavItem({
-        path: 'Settings/Vezo Labs : SSO Login',
-        label: 'Vezo Labs : SSO Login',
-        order: 1060,
+        path: 'System/SSO Login',
+        label: 'SSO Login',
+        order: 1070,
         icon: 'key',
         widgetConfig: {
           name: 'sso-login',

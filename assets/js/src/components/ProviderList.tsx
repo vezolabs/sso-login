@@ -33,7 +33,7 @@ export const ProviderList: React.FC<ProviderListProps> = ({
       title: 'Provider',
       key: 'name',
       render: (_: any, record: IdentityProvider) => (
-        <Space orientation="vertical" size={2}>
+        <Space direction="vertical" size={2}>
           <Space>
             {record.type === 'microsoft_entra_id' ? (
               <WindowsOutlined style={{ color: '#0078d4', fontSize: 18 }} />
@@ -99,7 +99,7 @@ export const ProviderList: React.FC<ProviderListProps> = ({
       title: 'Actions',
       key: 'actions',
       render: (_: any, record: IdentityProvider) => (
-        <Space orientation="horizontal" size="small">
+        <Space size="small">
           <Tooltip title="Configure & Edit">
             <Button
               icon={<EditOutlined />}
