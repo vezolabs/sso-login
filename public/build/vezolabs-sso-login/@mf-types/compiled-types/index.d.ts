@@ -6,3 +6,4 @@ export declare const VezolabsSsoPlugin: {
     }) => void;
     onStartup: () => void;
 };
+export default VezolabsSsoPlugin;

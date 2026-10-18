@@ -1,5 +1,4 @@
 import { VezolabsSsoPlugin } from './index';
 
-export default {
-  VezolabsSsoPlugin,
-};
+export { VezolabsSsoPlugin };
+export default VezolabsSsoPlugin;

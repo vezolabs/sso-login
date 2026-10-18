@@ -25,6 +25,7 @@ if (window.alternativePluginExportPaths === undefined) {
   window.alternativePluginExportPaths = {};
 }
 window.pluginRemotes.vezolabs_sso_login_bundle = "${remoteEntryUrl}";
+window.alternativePluginExportPaths.vezolabs_sso_login_bundle = "/plugins";
 `;
       fs.writeFileSync(path.resolve(buildPath, 'exposeRemote.js'), exposeRemoteJs.trim());
 
@@ -60,6 +61,7 @@ export default defineConfig({
       name: 'vezolabs_sso_login_bundle',
       filename: 'static/js/remoteEntry.js',
       exposes: {
+        '.': './js/src/plugins.ts',
         './plugins': './js/src/plugins.ts',
       },
       shared: {
